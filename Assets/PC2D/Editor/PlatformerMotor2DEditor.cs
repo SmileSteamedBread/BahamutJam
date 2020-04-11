@@ -40,26 +40,26 @@ public class PlatformerMotor2DEditor : Editor
     private readonly Property MOVING_PLATFORM_LAYER_MASK = new Property("movingPlatformLayerMask", "Moving Platforms Layer Mask");
     private readonly Property RAYCASTS_PER_SIDE = new Property("additionalRaycastsPerSide", "Additional Raycasts per Side");
 
-    private readonly Property GROUND_SPEED = new Property("groundSpeed", "Ground Speed");
-    private readonly Property TIME_TO_GROUND_SPEED = new Property("timeToGroundSpeed", "Time to Ground Speed");
-    private readonly Property GROUND_STOP_DISTANCE = new Property("groundStopDistance", "Ground Stop Distance");
+    private readonly Property GROUND_SPEED = new Property("groundSpeed", "地面跑速");
+    private readonly Property TIME_TO_GROUND_SPEED = new Property("timeToGroundSpeed", "從初速到地面跑速所需時間");
+    private readonly Property GROUND_STOP_DISTANCE = new Property("groundStopDistance", "在地面停止時的滑行距離");
 
-    private readonly Property AIR_SPEED = new Property("airSpeed", "Air Speed");
-    private readonly Property CHANGE_DIR_IN_AIR = new Property("changeDirectionInAir", "Enable Change Direction in Air");
-    private readonly Property TIME_TO_AIR_SPEED = new Property("timeToAirSpeed", "Time to Air Speed");
+    private readonly Property AIR_SPEED = new Property("airSpeed", "空中行進速度");
+    private readonly Property CHANGE_DIR_IN_AIR = new Property("changeDirectionInAir", "是否允許空中改變方向");
+    private readonly Property TIME_TO_AIR_SPEED = new Property("timeToAirSpeed", "從初速到空中行進速度所需時間");
     private readonly Property AIR_STOP_DISTANCE = new Property("airStopDistance", "Air Stop Distance");
 
-    private readonly Property FALL_SPEED = new Property("fallSpeed", "Fall Speed");
-    private readonly Property GRAVITY_MUTLIPLIER = new Property("gravityMultiplier", "Fall Gravity Multiplier");
-    private readonly Property FAST_FALL_SPEED = new Property("fastFallSpeed", "Fast Fall Speed");
+    private readonly Property FALL_SPEED = new Property("fallSpeed", "掉落速度");
+    private readonly Property GRAVITY_MUTLIPLIER = new Property("gravityMultiplier", "掉落重力參數");
+    private readonly Property FAST_FALL_SPEED = new Property("fastFallSpeed", "最快掉落速度");
 
     private readonly Property FAST_FALL_GRAVITY_MULTIPLIER = new Property(
         "fastFallGravityMultiplier",
-        "Fast Fall Gravity Multiplier");
+        "最快掉落重力參數");
 
     private readonly Property LADDER_SPEED = new Property(
         "ladderSpeed",
-        "Ladder Speed");
+        "爬梯速度");
 
     private readonly Property ENABLE_SLOPES = new Property("enableSlopes", "Enable Slopes");
 
