@@ -6,10 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(PlatformerMotor2D))]
 public class PlayerController2D : MonoBehaviour
 {
+    public int _money = 0;
+    public int _hp = 3;
     private PlatformerMotor2D _motor;
     private bool _restored = true;
     private bool _enableOneWayPlatforms;
     private bool _oneWayPlatformsAreWalls;
+
+    private const int _hp_max = 3;
 
     // Use this for initialization
     void Start()
@@ -117,6 +121,64 @@ public class PlayerController2D : MonoBehaviour
         if (Input.GetButtonDown(PC2D.Input.DASH))
         {
             _motor.Dash();
+        }
+    }
+
+    /// <summary>
+    /// 觸發相關檢查，記得觸發的物件要勾 IsTrigger
+    /// </summary>
+    /// <param name="o"></param>
+    void OnTriggerEnter2D(Collider2D o)
+    {
+        //Debug.Log(gameObject.name + " OnTriggerEnter with " + o.name);
+        if (o.tag.Equals("Exit")) //離開這層迷宮，前往下一層
+        {
+            MiniSceneManager._instance.CheckNextScene();
+        }
+        else if (o.tag.Equals("Money")) //吃到錢
+        {
+            _money += 100;
+        }
+        else if (o.tag.Equals("RedWater")) //吃到補血道具
+        {
+            //如果回復血量1點沒有超過血量最大值
+            if (_hp + 1 <= _hp_max)
+            {
+                _hp += 1;
+            }
+            else
+            {
+                _hp = _hp_max;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 不想用觸發，想用碰撞的就吃這邊的事件
+    /// </summary>
+    /// <param name="o"></param>
+    void OnCollisionEnter2D(Collision2D o)
+    {
+        //Debug.Log(gameObject.name + " OnCollisionEnter with " + o.collider.name);
+        if (o.gameObject.tag.Equals("Exit")) //離開這層迷宮，前往下一層
+        {
+            MiniSceneManager._instance.CheckNextScene();
+        }
+        else if (o.gameObject.tag.Equals("Money")) //吃到錢
+        {
+            _money += 100;
+        }
+        else if (o.gameObject.tag.Equals("RedWater")) //吃到補血道具
+        {
+            //如果回復血量1點沒有超過血量最大值
+            if (_hp + 1 <= _hp_max)
+            {
+                _hp += 1;
+            }
+            else
+            {
+                _hp = _hp_max;
+            }
         }
     }
 }
