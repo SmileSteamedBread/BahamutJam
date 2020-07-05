@@ -9,6 +9,7 @@ public class PlayerController2D : MonoBehaviour
     public int _money = 0;
     public int _hp = 3;
     private PlatformerMotor2D _motor;
+    private Shooter _shooter;
     private bool _restored = true;
     private bool _enableOneWayPlatforms;
     private bool _oneWayPlatformsAreWalls;
@@ -19,6 +20,7 @@ public class PlayerController2D : MonoBehaviour
     void Start()
     {
         _motor = GetComponent<PlatformerMotor2D>();
+        _shooter = GetComponent<Shooter>();
     }
 
     // before enter en freedom state for ladders
@@ -116,6 +118,15 @@ public class PlayerController2D : MonoBehaviour
         else if (Input.GetAxis(PC2D.Input.VERTICAL) < -PC2D.Globals.FAST_FALL_THRESHOLD)
         {
             _motor.fallFast = false;
+        }
+
+        // 如果按下了 Shot 的 Input的話，
+        if (Input.GetButtonDown(PC2D.Input.SHOT))
+        {
+            //把現在忍者的水平跟垂直按壓位移當作參數傳遞
+            Vector2 pos = new Vector2(Input.GetAxis(PC2D.Input.HORIZONTAL), Input.GetAxis(PC2D.Input.VERTICAL));
+            //發射手裏劍
+            _shooter.Shot(pos);   
         }
 
         if (Input.GetButtonDown(PC2D.Input.DASH))

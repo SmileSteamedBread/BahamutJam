@@ -9,6 +9,7 @@ namespace PC2D
         public const string VERTICAL = "Vertical";
         public const string JUMP = "Jump";
         public const string DASH = "Fire1";
+        public const string SHOT = "Shot";//發射的指令
     }
 
     public class Globals
